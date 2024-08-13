@@ -4,6 +4,7 @@
       <input type="checkbox" :checked='todo.checked' @change="togglCheckbox">
     </div>
     <span class="ml-3 flex-grow-1" :class="todo.checked?'text-muted': ''" :style="todo.checked?'text-decoration:line-through':''">{{todo.text}}</span>
+    <button class="btn btn-primary btn-sm" @click="clickDelete">Modify</button>
     <button class="btn btn-danger btn-sm" @click="clickDelete">Delete</button>
   </div>
 </template>
@@ -26,7 +27,7 @@ export default {
     },
     clickDelete() {
       this.$store.commit('DELETE_TODO', this.todo.id);
-    }
+    },
   }
 }
 </script>
