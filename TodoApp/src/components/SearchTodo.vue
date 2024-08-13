@@ -1,5 +1,5 @@
 <template>
-  <input type="text" class="w-100 p-2" placeholder="Search todo" @keyup.enter="search" v-model="searchText">
+  <input type="text" class="w-100 p-2" placeholder="Search todo" @input="search" v-model="searchText">
 </template>
 
 <script>

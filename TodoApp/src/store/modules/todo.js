@@ -33,6 +33,13 @@ export default {
 
       state.todos.splice(index, 1);
     },
+    MODIFY_TODO(state, {id, text}) {
+      const index = state.todos.findIndex(todo => {
+        return todo.id === id;
+      });
+
+      state.todos[index].text = text;
+    },
     SEARCH_TODO(state, text) {
       state.searchText = text;
     }
