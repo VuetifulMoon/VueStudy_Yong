@@ -5,7 +5,8 @@
         <input type="checkbox" :checked='todo.checked' @change="togglCheckbox">
       </div>
       <span class="ml-3 flex-grow-1" :class="todo.completed?'text-muted': ''" :style="todo.completed?'text-decoration:line-through':''">{{todo.text}}</span>
-      <button class="btn btn-danger btn-sm" @click="clickComplete">Complete</button>
+      <button v-if="!todo.completed" class="btn btn-danger btn-sm" @click="clickComplete">Complete</button>
+      <button v-if="todo.completed" class="btn btn-danger btn-sm" @click="clickComplete">UnComplete</button>
       <button class="btn btn-primary btn-sm" @click="clickModify">Modify</button>
       <button class="btn btn-danger btn-sm" @click="clickDelete">Delete</button>
     </div>

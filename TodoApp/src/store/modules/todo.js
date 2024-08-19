@@ -9,9 +9,6 @@ export default {
   getters: {
     numberOfCompletedTodo: state => {
       return state.todos.filter(todo => todo.completed).length;
-    },
-    selectedAll: state => {
-      return state.todos.filter(todo => todo.checked).length === state.todos.length;
     }
   },
   mutations: {
