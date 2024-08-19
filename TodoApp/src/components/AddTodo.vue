@@ -1,5 +1,5 @@
 <template>
-  <input type="text" class="w-100 p-2" placeholder="Type todo" @keyup.enter="addTodo" v-model="todoText">
+  <input type="text" class="w-100 p-2" placeholder="Type todo" @keypress.enter="addTodo" v-model="todoText">
 </template>
 
 <script>

@@ -9,12 +9,15 @@ export default {
   getters: {
     numberOfCompletedTodo: state => {
       return state.todos.filter(todo => todo.completed).length;
+    },
+    selectedAll: state => {
+      return state.todos.filter(todo => todo.checked).length === state.todos.length;
     }
   },
   mutations: {
     ADD_TODO(state, value) {
       state.todos.push({
-        id: state.todos[state.todos.length - 1].id +1,
+        id: state.todos[state.todos.length - 1].id + 1,
         text: value,
         checked: false,
         compeleted: false

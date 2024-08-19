@@ -5,7 +5,7 @@
     <AddTodo />
     <SearchTodo />
     <hr/>
-    <span @click="allSelect">전체선택</span>&nbsp;&nbsp;<span @click="selectedDelete">선택삭제</span>
+    <input type="checkbox" :checked="checkedAll" @change="allSelect"><span>전체선택</span>&nbsp;&nbsp;<span @click="selectedDelete">선택삭제</span>
     <div class="flex">
       <TodoList title="TodoList" :list='todos'/>
       <TodoList title="CompletedList" :list="completedTodos"/>
@@ -48,15 +48,22 @@ export default {
           return todo.text.includes(this.$store.state.todo.searchText) && todo.completed
         })
       }
-    }
+    },
+    checkedAll(){
+      return this.$store.getters['selectedAll'];
+    } 
   },
   methods: {
-    allSelect() {
-      this.$store.state.todo.todos.map((todo) => {
-        todo.checked = true
-        console.log(this.$store.state.todo.todos)
-      });
-
+    allSelect(e) {
+      if (e.target.checked) {
+        this.$store.state.todo.todos.map((todo) => {
+          todo.checked = true
+        });
+      } else {
+        this.$store.state.todo.todos.map((todo) => {
+          todo.checked = false
+        });
+      }
     },
     selectedDelete() {
       this.$store.state.todo.todos.map((todo) => {

@@ -2,6 +2,7 @@
   <div>
     <h2>{{title}}</h2>
     <Todo v-for='todo in list' :key="todo.id" :todo='todo'/>
+    <div v-show="list.length===0">할 일이 없습니다</div>
   </div>
 </template>
 
