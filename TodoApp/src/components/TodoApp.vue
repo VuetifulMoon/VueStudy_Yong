@@ -15,14 +15,12 @@
 <script>
 import TodoList from '@/components/TodoList.vue';
 import AddTodo from '@/components/AddTodo.vue';
-import CompletedTodo from '@/components/CompletedTodo.vue';
 import SearchTodo from '@/components/SearchTodo.vue';
 
 export default {
   components: {
     TodoList,
     AddTodo,
-    CompletedTodo,
     SearchTodo,
   },
   computed: {
