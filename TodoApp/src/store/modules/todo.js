@@ -35,13 +35,8 @@ export default {
       state.todos[index].completed = completed;
     },
     DELETE_TODO(state, todoId) {
-      console.log(todoId)
-      const index = state.todos.findIndex(todo => {
-        return todo.id === todoId;
-      });
-
       state.todos = state.todos.filter((todo) => {
-        return todo.id !== index
+        return todo.id !== todoId
       });
     },
     MODIFY_TODO(state, {id, text}) {
