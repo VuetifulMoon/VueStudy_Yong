@@ -29,40 +29,24 @@ export default {
   computed: {
     todos() {
       if (this.$store.state.todo.searchText === '') {
-        const searchResult = [];
-        this.$store.state.todo.todos.map(todo => {
-          if (!todo.completed) {
-            searchResult.push(todo);
-          }
+        return this.$store.state.todo.todos.filter((todo) => {
+          return !todo.completed
         })
-        return searchResult;
       } else {
-        const searchResult = [];
-        this.$store.state.todo.todos.map(todo => {
-          if (todo.text.includes(this.$store.state.todo.searchText) && !todo.completed) {
-            searchResult.push(todo);
-          }
+        return this.$store.state.todo.todos.filter((todo) => {
+          return todo.text.includes(this.$store.state.todo.searchText) && !todo.completed
         })
-        return searchResult;
       }
     },
     completedTodos() {
       if (this.$store.state.todo.searchText === '') {
-        const searchResult = [];
-        this.$store.state.todo.todos.map(todo => {
-          if (todo.completed) {
-            searchResult.push(todo);
-          }
+        return this.$store.state.todo.todos.filter((todo) => {
+          return todo.completed
         })
-        return searchResult;
       } else {
-        const searchResult = [];
-        this.$store.state.todo.todos.map(todo => {
-          if (todo.text.includes(this.$store.state.todo.searchText) && todo.completed) {
-            searchResult.push(todo);
-          }
+        return this.$store.state.todo.todos.filter((todo) => {
+          return todo.text.includes(this.$store.state.todo.searchText) && todo.completed
         })
-        return searchResult;
       }
     }
   },
