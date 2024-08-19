@@ -35,6 +35,7 @@ export default {
       state.todos[index].completed = completed;
     },
     DELETE_TODO(state, todoId) {
+      console.log(todoId)
       const index = state.todos.findIndex(todo => {
         return todo.id === todoId;
       });
