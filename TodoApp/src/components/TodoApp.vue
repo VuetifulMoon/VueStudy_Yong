@@ -5,6 +5,7 @@
     <AddTodo />
     <SearchTodo />
     <hr/>
+    <span @click="allSelect">전체선택</span>&nbsp;&nbsp;<span @click="selectedDelete">선택삭제</span>
     <div class="flex">
       <TodoList title="TodoList" :list='todos'/>
       <TodoList title="CompletedList" :list="completedTodos"/>
@@ -16,19 +17,21 @@
 import TodoList from '@/components/TodoList.vue';
 import AddTodo from '@/components/AddTodo.vue';
 import SearchTodo from '@/components/SearchTodo.vue';
+import CompletedTodo from './CompletedTodo.vue';
 
 export default {
   components: {
     TodoList,
     AddTodo,
     SearchTodo,
+    CompletedTodo
   },
   computed: {
     todos() {
       if (this.$store.state.todo.searchText === '') {
         const searchResult = [];
         this.$store.state.todo.todos.map(todo => {
-          if (!todo.checked) {
+          if (!todo.completed) {
             searchResult.push(todo);
           }
         })
@@ -36,7 +39,7 @@ export default {
       } else {
         const searchResult = [];
         this.$store.state.todo.todos.map(todo => {
-          if (todo.text.includes(this.$store.state.todo.searchText) && !todo.checked) {
+          if (todo.text.includes(this.$store.state.todo.searchText) && !todo.completed) {
             searchResult.push(todo);
           }
         })
@@ -47,7 +50,7 @@ export default {
       if (this.$store.state.todo.searchText === '') {
         const searchResult = [];
         this.$store.state.todo.todos.map(todo => {
-          if (todo.checked) {
+          if (todo.completed) {
             searchResult.push(todo);
           }
         })
@@ -55,12 +58,28 @@ export default {
       } else {
         const searchResult = [];
         this.$store.state.todo.todos.map(todo => {
-          if (todo.text.includes(this.$store.state.todo.searchText) && todo.checked) {
+          if (todo.text.includes(this.$store.state.todo.searchText) && todo.completed) {
             searchResult.push(todo);
           }
         })
         return searchResult;
       }
+    }
+  },
+  methods: {
+    allSelect() {
+      this.$store.state.todo.todos.map((todo) => {
+        todo.checked = true
+        console.log(this.$store.state.todo.todos)
+      });
+
+    },
+    selectedDelete() {
+      this.$store.state.todo.todos.map((todo) => {
+        if (todo.checked) {
+          this.$store.commit('DELETE_TODO', todo.id);
+        }
+      });
     }
   }
 }

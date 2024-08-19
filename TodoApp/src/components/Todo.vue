@@ -4,7 +4,8 @@
       <div>
         <input type="checkbox" :checked='todo.checked' @change="togglCheckbox">
       </div>
-      <span class="ml-3 flex-grow-1" :class="todo.checked?'text-muted': ''" :style="todo.checked?'text-decoration:line-through':''">{{todo.text}}</span>
+      <span class="ml-3 flex-grow-1" :class="todo.completed?'text-muted': ''" :style="todo.completed?'text-decoration:line-through':''">{{todo.text}}</span>
+      <button class="btn btn-danger btn-sm" @click="clickComplete">Complete</button>
       <button class="btn btn-primary btn-sm" @click="clickModify">Modify</button>
       <button class="btn btn-danger btn-sm" @click="clickDelete">Delete</button>
     </div>
@@ -37,6 +38,12 @@ export default {
       this.$store.commit('TOGGLE_TODO', {
         id: this.todo.id,
         checked: e.target.checked
+      });
+    },
+    clickComplete() {
+      this.$store.commit('COMPLETE_TODO', {
+        id: this.todo.id,
+        completed: !this.todo.completed
       });
     },
     clickDelete() {
