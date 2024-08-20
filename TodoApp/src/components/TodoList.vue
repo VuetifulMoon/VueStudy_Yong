@@ -46,7 +46,7 @@ export default {
     selectedDelete() {
       this.$store.state.todo.todos.map((todo) => {
         if (todo.checked) {
-          this.$store.commit('DELETE_TODO', todo.id);
+          this.$store.dispatch('deleteTodo', todo.id);
         }
       });
     }

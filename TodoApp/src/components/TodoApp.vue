@@ -48,6 +48,9 @@ export default {
         })
       }
     }
+  },
+  beforeMount() {
+    this.$store.dispatch('getTodo');
   }
 }
 </script>

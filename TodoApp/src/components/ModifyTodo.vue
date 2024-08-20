@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     modifyTodo() {
-      this.$store.commit('MODIFY_TODO', {id: this.todo.id, text: this.text});
+      this.$store.dispatch('modifyTodo', {id: this.todo.id, text: this.text});
       this.text = '';
       this.$emit('off-modify', false);
     }

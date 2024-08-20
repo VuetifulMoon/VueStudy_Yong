@@ -42,13 +42,13 @@ export default {
       });
     },
     clickComplete() {
-      this.$store.commit('COMPLETE_TODO', {
+      this.$store.dispatch('completeTodo', {
         id: this.todo.id,
         completed: !this.todo.completed
       });
     },
     clickDelete() {
-      this.$store.commit('DELETE_TODO', this.todo.id);
+      this.$store.dispatch('deleteTodo', this.todo.id);
     },
     clickModify() {
       this.onModify = !this.onModify;
