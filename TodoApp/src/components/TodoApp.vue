@@ -49,7 +49,7 @@ export default {
       }
     }
   },
-  beforeMount() {
+  created() {
     this.$store.dispatch('getTodo');
   }
 }
