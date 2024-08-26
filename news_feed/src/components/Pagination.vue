@@ -10,7 +10,7 @@ export default {
 
   computed: {
     totalPages() {
-      return this.$store.state.news.totalPages;
+      return this.$store.getters['totalPages'];
     },
     currentPage() {
       return this.$store.state.news.currentPage;

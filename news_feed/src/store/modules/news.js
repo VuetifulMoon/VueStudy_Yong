@@ -6,14 +6,19 @@ export default {
     category: 'general',
     country: 'us',
     currentPage: 1,
-    totalPages: 0
+    totalPages: 0,
+    totalResults: 0
   },
   getters: {
+    totalPages: state => {
+      return Math.ceil(state.totalResults/20);
+    }
   },
   mutations: {
     FETCH_NEWS(state, data) {
       state.news = data.articles;
-      state.totalPages = Math.ceil(data.totalResults/20);
+      state.totalResults = data.totalResults;
+      // state.totalPages = Math.ceil(data.totalResults/20);
     },
     SET_COUNTRY(state, data) {
       state.country = data;
